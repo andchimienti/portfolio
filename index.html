@@ -6,6 +6,8 @@
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#161616" />
   <title>Andrea Chimienti — Portfolio</title>
+  <link rel="icon" href="favicon.ico">
+
 
   <!-- Font: Jakarta Sans (via Google Fonts: Plus Jakarta Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +22,7 @@
       --surface: #1f1f1f;
       --border: #262626;
       --link: #d6e6ff;
-      --gap: 30px; /* For image gap */
+      --gap: 30px;
     }
     *, *::before, *::after{ box-sizing: border-box; }
     html,body{ min-height:100%; }
@@ -61,87 +63,76 @@
     [hidden]{ display: none !important; }
 
     /* Simple content styling */
-    .kicker{ font-weight: 600; letter-spacing: .02em; text-transform: uppercase; font-size: 22px; color: var(--muted); font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
+    .kicker{ font-weight: 600; letter-spacing: .02em; text-transform: uppercase; font-size: 22px; color: var(--muted); }
     ul{ padding-left: 18px; }
     li{ margin: 6px 0; }
 
-    .about-wrap {
-  display: flex;
-      flex-direction: row;
-  align-items: flex-start;
-  gap: var(--gap);
-  margin-bottom: 24px;
-}
+    /* About layout */
+    .about-wrap{ display:flex; gap:var(--gap); align-items:flex-start; margin-bottom:24px; }
+    .about-text{ flex:1; }
+    .about-portrait{ width:200px; height:auto; border-radius:10px; flex:0 0 200px; }
 
-    .about-text {
-  flex: 1;
-}
-
-    .about-portrait {
-  width: 150px;
-  border-radius: 10px;
-       flex-shrink: 0; /* Prevent image from shrinking */
-  order: -1; /* Ensure image is first in flex order */
-}
-
-    /* Nice selection + reduced motion */
     ::selection{ background: #2b4a7d; color: white; }
     @media (prefers-reduced-motion: no-preference){
       .tabs [role="tab"]{ transition: background .16s ease, color .16s ease; }
     }
 
     /* Work Experience (timeline) */
-.xp{ display:grid; gap:16px; margin-top:12px; }
-.xp-item{
-  display:grid; grid-template-columns:180px 1fr; gap:18px;
-  background:var(--surface); border:1px solid var(--border);
-  border-radius:12px; padding:16px;
-}
-.xp-time{ font-weight:600; color:var(--muted); }
-.xp-title{ font-weight:600; }
-.xp-org{ color:var(--muted); margin-left:.35rem; }
-.xp-bullets{ margin:8px 0 0; padding-left:18px; }
-.xp-bullets li{ margin:4px 0; }
-@media (max-width:700px){ .xp-item{ grid-template-columns:1fr; } }
+    .xp{ display:grid; gap:16px; margin-top:12px; }
+    .xp-item{
+      display:grid; grid-template-columns:180px 1fr; gap:18px;
+      background:var(--surface); border:1px solid var(--border);
+      border-radius:12px; padding:16px;
+    }
+    .xp-time{ font-weight:600; color:var(--muted); }
+    .xp-title{ font-weight:600; }
+    .xp-org{ color:var(--muted); margin-left:.35rem; }
+    .xp-bullets{ margin:8px 0 0; padding-left:18px; }
+    .xp-bullets li{ margin:4px 0; }
+    @media (max-width:700px){ .xp-item{ grid-template-columns:1fr; } }
+
+    /* Skillset */
+    .skills { display:block; margin-top:8px; }
+    .skill-list{ padding-left:18px; margin:8px 0 22px; }
+    .skill-list .sub{ padding-left:18px; margin-top:8px; }
+    .skill-list strong{ font-weight:600; color:var(--text); }
 
     /* Get in touch */
-.contact-list{
-  list-style:none; padding:0; margin:12px 0 0;
-  display:grid; gap:14px;
-}
-@media (min-width:720px){
-  .contact-list{ grid-template-columns:repeat(3,minmax(0,1fr)); }
-}
-.contact-cta{
-  display:flex; align-items:center; justify-content:space-between;
-  text-decoration:none; padding:16px 18px; border-radius:12px;
-  background: var(--surface, #1b1b1b);
-  border:1px solid var(--border, #2a2a2a);
-  color:#e8e8e8; font-weight:600;
-  transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.contact-cta--primary{
-  /* subtle highlight/shine */
-  background:
-    linear-gradient(#1b1b1b, #1b1b1b) padding-box,
-    linear-gradient(135deg, #7cc1ff, #b58cff, #8ef3a0) border-box;
-  border:1px solid transparent;
-}
-.contact-cta:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.45);
-}
-.contact-cta .label{ display:flex; align-items:center; gap:12px; }
-.contact-cta svg{ width:20px; height:20px; opacity:.9; flex:0 0 20px; }
-.contact-cta .arrow{ opacity:.6; margin-left:12px; }
-
+    .contact-list{
+      list-style:none; padding:0; margin:12px 0 0;
+      display:grid; gap:14px;
+    }
+    @media (min-width:720px){
+      .contact-list{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+    }
+    .contact-cta{
+      display:flex; align-items:center; justify-content:space-between;
+      text-decoration:none; padding:16px 18px; border-radius:12px;
+      background: var(--surface, #1b1b1b);
+      border:1px solid var(--border, #2a2a2a);
+      color:#e8e8e8; font-weight:600;
+      transition: transform .06s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .contact-cta--primary{
+      background:
+        linear-gradient(#1b1b1b, #1b1b1b) padding-box,
+        linear-gradient(135deg, #7cc1ff, #b58cff, #8ef3a0) border-box;
+      border:1px solid transparent;
+    }
+    .contact-cta:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.45);
+    }
+    .contact-cta .label{ display:flex; align-items:center; gap:12px; }
+    .contact-cta svg{ width:20px; height:20px; opacity:.9; flex:0 0 20px; }
+    .contact-cta .arrow{ opacity:.6; margin-left:12px; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <h1>Andrea Chimienti</h1>
-      <p class="lede">CRO Expert, E‑commerce builder &amp; Funnel strategist. <a href="#" data-open="contact">Get in touch</a>.</p>
+      <p class="lede">CRO Expert, E-commerce builder &amp; Funnel strategist. <a href="#" data-open="contact">Get in touch</a>.</p>
 
       <nav class="tabs" role="tablist" aria-label="Sections">
         <button id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about" tabindex="0">About</button>
@@ -153,95 +144,113 @@
 
     <main>
       <!-- About (default open) -->
-     <section id="panel-about" role="tabpanel" aria-labelledby="tab-about">
-  <div class="about-wrap">
-    <img class="about-portrait" src="images/photo_updated.jpg" alt="Andrea Chimienti" width="200" loading="lazy" />
-    <div class="about-text">
-      <div class="kicker">WHO AM I?</div>
-      <p>
-        My name is Andrea. I’m a 22-year-old Italian based in Romania, with two years of experience in e-commerce. <br>I entered online marketing through an early passion for video games, which sparked my interest in what I could build and optimize on a computer. I pick up new tools quickly and look for chances to apply them, continually expanding my skill set.
-      </p>
-    </div>
-  </div>
-  <!-- rest of the section remains unchanged -->
-  <div class="kicker">HOW CAN I HELP YOU?</div>
-  <p>
-    I help e-commerce brands grow revenue while keeping the same ad-spend by improving the experience customers have before, during, and after checkout.
-    My work includes highly analytical data, UX and messaging to remove friction and lift conversion rate.
-  </p>
-  <ul>
-    <li>Conduct a full-funnel, end-to-end customer journey audit to pinpoint friction and prioritize high-impact CX improvements.</li>
-    <li>Design and launch A/B tests across the entire customer journey, including pre-lander pages, landing pages, checkout pages, post-purchase pages.</li>
-    <li>Suggest new ideas based on thorough market research on what could be improved in the funnel for a smoother customer experience & higher conversion rate.</li>
-    <li>Instrument analytics and tracking for trustworthy insights.</li>
-  </ul>
-  <p>
-    Based on your goals, we can start with a fast CRO audit or a full test roadmap. 
-    Whenever you're ready, <a href="#contact" data-open="contact">say hello</a>.
-  </p>
-</section>
-
-      <!-- Work Experience (placeholder) -->
-      <section id="panel-experience" role="tabpanel" aria-labelledby="tab-experience">
-  <div class="kicker">Work Experience</div>
-  <div class="xp">
-
-    <!-- Most recent first -->
-    <article class="xp-item">
-      <div class="xp-time">Jun 2025 — Present</div>
-      <div>
-        <div class="xp-title">Freelance CRO & Landing Page Builder
-          <span class="xp-org">Self-employed</span>
+      <section id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+        <div class="about-wrap">
+          <img class="about-portrait" src="images/photo_updated.jpg" alt="Andrea Chimienti" width="200" loading="lazy" />
+          <div class="about-text">
+            <div class="kicker">WHO AM I?</div>
+            <p>
+              My name is Andrea. I’m a 22-year-old Italian based in Romania, with two years of experience in e-commerce. <br>
+              I entered online marketing through an early passion for video games, which sparked my interest in what I could build and optimize on a computer. I pick up new tools quickly and look for chances to apply them, continually expanding my skill set.
+            </p>
+          </div>
         </div>
-        <ul class="xp-bullets">
-          <li>Creating high-converting landing pages in multiple niches (health, supplements, apparel, etc.).</li>
-          <li>Writing conversion-focused copy to reduce customer friction.</li>
+
+        <div class="kicker">HOW CAN I HELP YOU?</div>
+        <p>
+          I help e-commerce brands grow revenue while keeping the same ad-spend by improving the experience customers have before, during, and after checkout.
+          My work includes highly analytical data, UX and messaging to remove friction and lift conversion rate.
+        </p>
+        <ul>
+          <li>Conduct a full-funnel, end-to-end customer journey audit to pinpoint friction and prioritize high-impact CX improvements.</li>
+          <li>Design and launch A/B tests across the entire customer journey, including pre-lander pages, landing pages, checkout pages, post-purchase pages.</li>
+          <li>Suggest new ideas based on thorough market research on what could be improved in the funnel for a smoother customer experience &amp; higher conversion rate.</li>
+          <li>Instrument analytics and tracking for trustworthy insights.</li>
         </ul>
-      </div>
-    </article>
+        <p>
+          Based on your goals, we can start with a fast CRO audit or a full test roadmap.
+          Whenever you're ready, <a href="#contact" data-open="contact">say hello</a>.
+        </p>
+      </section>
 
-    <article class="xp-item">
-      <div class="xp-time">Mar 2025 — Jun 2025</div>
-      <div>
-        <div class="xp-title">CRO Specialist & Builder
-          <span class="xp-org">INCREMENTIUM (CRO-focused agency)</span>
+      <!-- Work Experience -->
+      <section id="panel-experience" role="tabpanel" aria-labelledby="tab-experience" hidden>
+        <div class="kicker">Work Experience</div>
+        <div class="xp">
+
+          <article class="xp-item">
+            <div class="xp-time">Jun 2025 — Present</div>
+            <div>
+              <div class="xp-title">Freelance CRO &amp; Landing Page Builder
+                <span class="xp-org">Self-employed</span>
+              </div>
+              <ul class="xp-bullets">
+                <li>Creating high-converting landing pages in multiple niches (health, supplements, apparel, etc.).</li>
+                <li>Writing conversion-focused copy to reduce customer friction.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="xp-item">
+            <div class="xp-time">Mar 2025 — Jun 2025</div>
+            <div>
+              <div class="xp-title">CRO Specialist &amp; Builder
+                <span class="xp-org">INCREMENTIUM (CRO-focused agency)</span>
+              </div>
+              <ul class="xp-bullets">
+                <li>Ran CRO audits across the full customer journey to identify friction and opportunities.</li>
+                <li>Proposed approaches for converting cold and warm traffic.</li>
+                <li>Suggested new pages, funnels, and systems to implement.</li>
+                <li>Built high-converting pages.</li>
+                <li>Set up A/B tests to improve each client’s North Star Metric (mostly PPV).</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="xp-item">
+            <div class="xp-time">May 2024 — Jan 2025</div>
+            <div>
+              <div class="xp-title">CRO &amp; Growth
+                <span class="xp-org">Forge Skin</span>
+              </div>
+              <ul class="xp-bullets">
+                <li>Helped scale to a 7-figure monthly brand.</li>
+                <li>Optimized funnel strategy and overall conversion flow.</li>
+                <li>Performed data-driven conversion rate analysis.</li>
+                <li>Set up A/B tests aligned to the company’s North Star Metric.</li>
+                <li>Created innovative landing pages to boost CVR.</li>
+                <li>Implemented technical systems and software.</li>
+                <li>Worked with the CX team on technical inquiries and with Operations on systems rollout.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="xp-item">
+            <div class="xp-time">Feb 2023 — May 2024</div>
+            <div>
+              <div class="xp-title">Freelance CRO &amp; Landing Page Builder
+                <span class="xp-org">Various clients</span>
+              </div>
+              <ul class="xp-bullets">
+                <li>Created high-converting landing pages across health, supplements, apparel and more.</li>
+                <li>Wrote conversion-focused copy to reduce customer friction.</li>
+              </ul>
+            </div>
+          </article>
+
         </div>
-        <ul class="xp-bullets">
-          <li>Ran CRO audits across the full customer journey to identify friction and opportunities.</li>
-          <li>Proposed approaches for converting cold and warm traffic.</li>
-          <li>Suggested new pages, funnels, and systems to implement.</li>
-          <li>Built high-converting pages.</li>
-          <li>Set up A/B tests to improve each client’s North Star Metric (mostly PPV).</li>
-        </ul>
-      </div>
-    </article>
+      </section>
 
-    <article class="xp-item">
-      <div class="xp-time">May 2024 — Jan 2025</div>
-      <div>
-        <div class="xp-title">CRO & Growth
-          <span class="xp-org">Forge Skin</span>
-        </div>
-        <ul class="xp-bullets">
-          <li>Helped scale to a 7-figure monthly brand.</li>
-          <li>Optimized funnel strategy and overall conversion flow.</li>
-          <li>Performed data-driven conversion rate analysis.</li>
-          <li>Set up A/B tests aligned to the company’s North Star Metric.</li>
-          <li>Created innovative landing pages to boost CVR.</li>
-          <li>Implemented technical systems and software.</li>
-          <li>Worked with the CX team on technical inquiries and with Operations on systems rollout.</
-
-
-      <!-- Skillset (placeholder) -->
+      <!-- Skillset -->
       <section id="panel-skillset" role="tabpanel" aria-labelledby="tab-skillset" hidden>
         <div class="skills">
           <div class="kicker">ABOUT MY WORK</div>
           <ul class="skill-list">
-            <li>Deeply data‑driven.</li>
+            <li>Deeply data-driven.</li>
             <li>Conversion rate optimization grounded in customer psychology.</li>
             <li>Conduct rigorous qualitative and quantitative research to understand customer psychology and target personas.</li>
-            <li>Comfort with the usage of HTML, CSS and Javascript coding </li>
-            <li>Proficient with e‑commerce platforms and tooling
+            <li>Comfortable using HTML, CSS and JavaScript.</li>
+            <li>Proficient with e-commerce platforms and tooling
               <ul class="sub">
                 <li><strong>Platforms/CRMs:</strong> Shopify, Funnelish, CheckoutChamp, Tagadatpay, Sticky.io</li>
                 <li><strong>Other tools:</strong> VTURB, Namecheap, Wix, YondaTax, TaxJar, n8n, Shopify Flows, Google Sheets, ClickUp &amp; more</li>
@@ -254,65 +263,57 @@
             <li>Fast learner.</li>
             <li>Highly adaptable.</li>
             <li>Collaborative team player with clear, proactive communication.</li>
-            <li>Professional, detail‑oriented, and proud of my craft.</li>
+            <li>Professional, detail-oriented, and proud of my craft.</li>
           </ul>
         </div>
       </section>
 
       <!-- Contact -->
-      <section id="panel-contact" role="tabpanel" aria-labelledby="tab-contact">
-  <div class="kicker">Contact</div>
-
-  <ul class="contact-list">
-    <li>
-      <a class="contact-cta contact-cta--primary"
-         href="https://calendly.com/and-chimienti/cro-discovery-call"
-         target="_blank" rel="noopener">
-        <span class="label">
-          <!-- calendar icon -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-          Discovery call
-        </span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-
-    <li>
-      <a class="contact-cta contact-cta--primary"
-         href="mailto:and.chimienti@gmail.com">
-        <span class="label">
-          <!-- mail icon -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"></path>
-            <polyline points="22,8 12,14 2,8"></polyline>
-          </svg>
-          Email
-        </span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-
-    <li>
-      <a class="contact-cta contact-cta--primary"
-         href="https://t.me/andchimi" target="_blank" rel="noopener">
-        <span class="label">
-          <!-- paper plane icon -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M22 2L11 13"></path>
-            <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
-          </svg>
-          Telegram
-        </span>
-        <span class="arrow">→</span>
-      </a>
-    </li>
-  </ul>
-</section>
+      <section id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+        <div class="kicker">Get in touch</div>
+        <ul class="contact-list">
+          <li>
+            <a class="contact-cta contact-cta--primary"
+               href="https://calendly.com/and-chimienti/cro-discovery-call"
+               target="_blank" rel="noopener">
+              <span class="label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                Discovery call
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-cta contact-cta--primary" href="mailto:and.chimienti@gmail.com">
+              <span class="label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"></path>
+                  <polyline points="22,8 12,14 2,8"></polyline>
+                </svg>
+                Email
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-cta contact-cta--primary" href="https://t.me/andchimi" target="_blank" rel="noopener">
+              <span class="label">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 2L11 13"></path>
+                  <path d="M22 2l-7 20-4-9-9-4 20-7z"></path>
+                </svg>
+                Telegram
+              </span>
+              <span class="arrow">→</span>
+            </a>
+          </li>
+        </ul>
+      </section>
 
     </main>
   </div>
@@ -331,9 +332,7 @@
           if(panel) panel.hidden = !selected;
         });
         tab.focus();
-        // update URL hash without scrolling
-        const id = tab.id.replace('tab-','');
-        history.replaceState(null, '', '#' + id);
+        history.replaceState(null, '', '#' + tab.id.replace('tab-',''));
       }
 
       tabs.forEach((t, i) => {
@@ -346,9 +345,9 @@
         });
       });
 
-      // Deep‑linking via hash
+      // Deep-linking via hash or default to About
       const fromHash = document.querySelector('#tab-' + location.hash.slice(1));
-      if(fromHash) activate(fromHash);
+      if(fromHash){ activate(fromHash); } else { activate(document.getElementById('tab-about')); }
 
       // Open contact tab from inline links
       document.querySelectorAll('[data-open="contact"]').forEach(a => {
