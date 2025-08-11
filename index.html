@@ -59,7 +59,7 @@
     [hidden]{ display: none !important; }
 
     /* Simple content styling */
-    .kicker{ font-weight: 600; letter-spacing: .02em; text-transform: uppercase; font-size: 12px; color: var(--muted); }
+    .kicker{ font-weight: 600; letter-spacing: .02em; text-transform: uppercase; font-size: 12px; color: var(--muted); font-family:"Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; }
     ul{ padding-left: 18px; }
     li{ margin: 6px 0; }
 
@@ -87,14 +87,19 @@
     <main>
       <!-- About (default open) -->
       <section id="panel-about" role="tabpanel" aria-labelledby="tab-about">
-        <div class="kicker">WHO AM I?</div>
-        <p>
-        My name is Andrea. I’m a 22-year-old Italian based in Romania, with two years of experience in e-commerce. <br>I entered online marketing through an early passion for video games, which sparked my interest in what I could build and optimize on a computer. I pick up new tools quickly and look for chances to apply them, continually expanding my skill set.
-        </p>
-        <p>
-          I help e-commerce brands grow revenue while keeping the same ad-spend by improving the experience customers have before, during, and after checkout.
-          My work includes highly analytical data, UX and messaging to remove friction and lift conversion rate.
-        </p>
+        <div class="about-wrap">
+          <div class="about-text">
+            <div class="kicker">WHO AM I?</div>
+            <p>
+            My name is Andrea. I’m a 22-year-old Italian based in Romania, with two years of experience in e-commerce. <br>I entered online marketing through an early passion for video games, which sparked my interest in what I could build and optimize on a computer. I pick up new tools quickly and look for chances to apply them, continually expanding my skill set.
+            </p>
+            <p>
+              I help e-commerce brands grow revenue while keeping the same ad-spend by improving the experience customers have before, during, and after checkout.
+              My work includes highly analytical data, UX and messaging to remove friction and lift conversion rate.
+            </p>
+          </div>
+          <img class="about-portrait" src="images/photo_2025-08-11_22-05-20.jpg" alt="Andrea Chimienti" width="200" loading="lazy" />
+        </div>
         <div class="kicker">HOW CAN I HELP YOU?</div>
         <ul>
           <li>Conduct a full-funnel, end-to-end customer journey audit to pinpoint friction and prioritize high-impact CX improvements.</li>
