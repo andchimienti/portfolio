@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#161616" />
+  <title>Andrea Chimienti — CRO Expert</title>
+
+  <!-- Font: Jakarta Sans (via Google Fonts: Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg: #161616;
+      --text: #e8e8e8;
+      --muted: #a1a1a1;
+      --surface: #1f1f1f;
+      --border: #262626;
+      --link: #d6e6ff;
+    }
+    *, *::before, *::after{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a{ color: var(--link); text-underline-offset: 3px; }
+    a:hover{ text-decoration-thickness: 2px; }
+
+    .wrap{ max-width: 880px; margin: 64px auto; padding: 0 24px; }
+    h1{
+      font-size: clamp(34px, 6vw, 52px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+    .lede{ color: var(--muted); margin: 0 0 18px; }
+
+    /* Tabs */
+    .tabs{ display:inline-flex; gap:6px; padding:6px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+    .tabs [role="tab"]{
+      appearance:none; border:0; background:transparent; color: var(--muted);
+      padding: 8px 14px; border-radius: 8px; font-weight: 600; cursor: pointer;
+    }
+    .tabs [role="tab"][aria-selected="true"]{ background:#262626; color: var(--text); }
+    .tabs [role="tab"]:focus-visible{ outline: 2px solid #6aa6ff; outline-offset: 2px; }
+
+    main{ margin-top: 28px; }
+    section[role="tabpanel"]{ margin-top: 8px; }
+    [hidden]{ display: none !important; }
+
+    /* Simple content styling */
+    .kicker{ font-weight: 600; letter-spacing: .02em; text-transform: uppercase; font-size: 12px; color: var(--muted); }
+    ul{ padding-left: 18px; }
+    li{ margin: 6px 0; }
+
+    /* Nice selection + reduced motion */
+    ::selection{ background: #2b4a7d; color: white; }
+    @media (prefers-reduced-motion: no-preference){
+      .tabs [role="tab"]{ transition: background .16s ease, color .16s ease; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Andrea Chimienti</h1>
+      <p class="lede">CRO Expert, E‑commerce builder &amp; Funnel strategist. <a href="#" data-open="contact">Get in touch</a>.</p>
+
+      <nav class="tabs" role="tablist" aria-label="Sections">
+        <button id="tab-about" role="tab" aria-selected="true" aria-controls="panel-about" tabindex="0">About</button>
+        <button id="tab-experience" role="tab" aria-selected="false" aria-controls="panel-experience" tabindex="-1">Work Experience</button>
+        <button id="tab-skillset" role="tab" aria-selected="false" aria-controls="panel-skillset" tabindex="-1">Skillset</button>
+        <button id="tab-contact" role="tab" aria-selected="false" aria-controls="panel-contact" tabindex="-1">Get In Touch</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- About (default open) -->
+      <section id="panel-about" role="tabpanel" aria-labelledby="tab-about">
+        <p>
+          I help online stores grow revenue by improving the experience customers have before, during, and after checkout.
+          My work blends data, UX and messaging to remove friction and lift conversion rate.
+        </p>
+        <div class="kicker">What I typically do</div>
+        <ul>
+          <li>Audit funnels and product pages to find high‑impact opportunities.</li>
+          <li>Design and launch A/B tests across landing, PDP and checkout flows.</li>
+          <li>Map/email lifecycle and quick wins for retention.</li>
+          <li>Instrument analytics and tracking for trustworthy insights.</li>
+        </ul>
+        <p>
+          Based on your goals, we can start with a fast CRO audit or a full test roadmap. 
+          When you're ready, <a href="#" data-open="contact">say hello</a>.
+        </p>
+      </section>
+
+      <!-- Work Experience (placeholder) -->
+      <section id="panel-experience" role="tabpanel" aria-labelledby="tab-experience" hidden>
+        <p class="lede">Add roles, years and the outcomes you delivered here. Want me to scaffold this next?</p>
+      </section>
+
+      <!-- Skillset (placeholder) -->
+      <section id="panel-skillset" role="tabpanel" aria-labelledby="tab-skillset" hidden>
+        <p class="lede">List your go‑to tools, methods and platforms. We can turn this into neat bullet groups.</p>
+      </section>
+
+      <!-- Contact -->
+      <section id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+        <p>
+          Prefer email? <a href="mailto:andrea@example.com">andrea@example.com</a><br />
+          Or drop a short brief and a link to your store. I’ll reply within 1–2 business days.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+      const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+      function activate(tab){
+        tabs.forEach(t => {
+          const selected = t === tab;
+          t.setAttribute('aria-selected', selected);
+          t.tabIndex = selected ? 0 : -1;
+          const panel = document.getElementById(t.getAttribute('aria-controls'));
+          if(panel) panel.hidden = !selected;
+        });
+        tab.focus();
+        // update URL hash without scrolling
+        const id = tab.id.replace('tab-','');
+        history.replaceState(null, '', '#' + id);
+      }
+
+      tabs.forEach((t, i) => {
+        t.addEventListener('click', () => activate(t));
+        t.addEventListener('keydown', (e) => {
+          if(e.key === 'ArrowRight'){ activate(tabs[(i+1) % tabs.length]); }
+          if(e.key === 'ArrowLeft'){ activate(tabs[(i-1+tabs.length) % tabs.length]); }
+          if(e.key === 'Home'){ activate(tabs[0]); }
+          if(e.key === 'End'){ activate(tabs[tabs.length-1]); }
+        });
+      });
+
+      // Deep‑linking via hash
+      const fromHash = document.querySelector('#tab-' + location.hash.slice(1));
+      if(fromHash) activate(fromHash);
+
+      // Open contact tab from inline links
+      document.querySelectorAll('[data-open="contact"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const contactTab = document.getElementById('tab-contact');
+          if(contactTab) activate(contactTab);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
