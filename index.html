@@ -89,6 +89,20 @@
     @media (prefers-reduced-motion: no-preference){
       .tabs [role="tab"]{ transition: background .16s ease, color .16s ease; }
     }
+
+    /* Work Experience (timeline) */
+.xp{ display:grid; gap:16px; margin-top:12px; }
+.xp-item{
+  display:grid; grid-template-columns:180px 1fr; gap:18px;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:16px;
+}
+.xp-time{ font-weight:600; color:var(--muted); }
+.xp-title{ font-weight:600; }
+.xp-org{ color:var(--muted); margin-left:.35rem; }
+.xp-bullets{ margin:8px 0 0; padding-left:18px; }
+.xp-bullets li{ margin:4px 0; }
+@media (max-width:700px){ .xp-item{ grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -136,9 +150,55 @@
 </section>
 
       <!-- Work Experience (placeholder) -->
-      <section id="panel-experience" role="tabpanel" aria-labelledby="tab-experience" hidden>
-        <p class="lede">Add roles, years and the outcomes you delivered here. Want me to scaffold this next?</p>
-      </section>
+      <section id="panel-experience" role="tabpanel" aria-labelledby="tab-experience">
+  <div class="kicker">Work Experience</div>
+  <div class="xp">
+
+    <!-- Most recent first -->
+    <article class="xp-item">
+      <div class="xp-time">Jun 2025 — Present</div>
+      <div>
+        <div class="xp-title">Freelance CRO & Landing Page Builder
+          <span class="xp-org">Self-employed</span>
+        </div>
+        <ul class="xp-bullets">
+          <li>Creating high-converting landing pages in multiple niches (health, supplements, apparel, etc.).</li>
+          <li>Writing conversion-focused copy to reduce customer friction.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="xp-item">
+      <div class="xp-time">Mar 2025 — Jun 2025</div>
+      <div>
+        <div class="xp-title">CRO Specialist & Builder
+          <span class="xp-org">INCREMENTIUM (CRO-focused agency)</span>
+        </div>
+        <ul class="xp-bullets">
+          <li>Ran CRO audits across the full customer journey to identify friction and opportunities.</li>
+          <li>Proposed approaches for converting cold and warm traffic.</li>
+          <li>Suggested new pages, funnels, and systems to implement.</li>
+          <li>Built high-converting pages.</li>
+          <li>Set up A/B tests to improve each client’s North Star Metric (mostly PPV).</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="xp-item">
+      <div class="xp-time">May 2024 — Jan 2025</div>
+      <div>
+        <div class="xp-title">CRO & Growth
+          <span class="xp-org">Forge Skin</span>
+        </div>
+        <ul class="xp-bullets">
+          <li>Helped scale to a 7-figure monthly brand.</li>
+          <li>Optimized funnel strategy and overall conversion flow.</li>
+          <li>Performed data-driven conversion rate analysis.</li>
+          <li>Set up A/B tests aligned to the company’s North Star Metric.</li>
+          <li>Created innovative landing pages to boost CVR.</li>
+          <li>Implemented technical systems and software.</li>
+          <li>Worked with the CX team on technical inquiries and with Operations on systems rollout.</
+
 
       <!-- Skillset (placeholder) -->
       <section id="panel-skillset" role="tabpanel" aria-labelledby="tab-skillset" hidden>
