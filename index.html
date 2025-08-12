@@ -63,7 +63,7 @@
     body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:var(--fs-base);line-height:1.6}
 
     .container{width:var(--w);margin-inline:auto;padding-inline:1.25rem}
-    .section{padding: clamp(3rem, 6vw, 6rem) 0}
+    .section{padding: clamp(3rem, 6vw, 60px) 0}
     .eyebrow{display:inline-block;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-size:var(--fs-xs)}
     .kicker{display:inline-flex;align-items:center;gap:.6rem;color:var(--muted);font-size:var(--fs-sm)}
     .kicker .dot{width:.45rem;height:.45rem;border-radius:50%;background:var(--orange-500);display:inline-block}
@@ -101,7 +101,7 @@
     .hero .grid{display:grid;grid-template-columns: 1.1fr .9fr;gap: clamp(1.25rem, 3vw, 2.5rem);align-items:center}
     .hero p{color:var(--muted)}
     .hero .actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
-    .hero .success-kicker{width:100%;text-align:center;margin-top:.5rem;font-weight:700;letter-spacing:.06em;color:var(--green-700)}
+    .hero .success-kicker{width:100%;text-align:center;margin-top:.5rem;font-weight:700;letter-spacing:.06em;color:var(--green-700); margin-bottom: 8px;}
 
     .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.25rem}
     .metric{background:var(--green-700);border:1px solid transparent;border-radius:var(--radius);padding:1rem;text-align:center;box-shadow:var(--shadow);color:#eef7f4}
@@ -130,7 +130,7 @@
 
     /* Slight accent for service cards */
     .services .card{position:relative;overflow:hidden}
-    .services .card::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--orange-500),transparent)}
+    .services .card::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--green-700),transparent)}
 
     /* Process timeline */
     .timeline{position:relative;margin-top:1rem}
@@ -205,7 +205,7 @@
       <div class="container grid">
         <div>
           <span class="kicker"><span class="dot"></span>Conversion Rate Optimization</span>
-          <h1>Squeeze The Most Out Of Your Already Existing Traffic With Data-Driven CRO</h1>
+          <h1>Squeeze The Most Out Of Your Traffic With <br><span style="text-decoration-color: var(--green-700); text-decoration: underline;text-decoration-thickness: 20px;text-underline-offset: -13px;text-decoration-skip-ink: none;text-decoration-color: var(--orange-500);text-decoration-margin: 10px;"></span>Data-Driven CRO</h1>
           <p>I help DTC E-commerce brands make more profit per visitor with the same amount of adspend through research-backed data-driven CRO.</p>
           <div class="actions">
             <a class="button button--primary" href="#contact" aria-label="Book a discovery call">Book a discovery call</a>
@@ -250,7 +250,7 @@
           <article class="card" aria-label="Experimentation Program">
             <h3>Experimentation Program</h3>
             <p>Ongoing research, hypothesis design, and A/B testing. Velocity without guesswork.</p>
-            <div class="chip" style="margin-top:.5rem"><span class="dot"></span><span>Monthly retainer</span></div>
+            <div class="chip" style="margin-top:.5rem"><span class="dot"></span><span>Long-term Approach</span></div>
           </article>
           <article class="card" aria-label="Landing Pages">
             <h3>Landing Pages</h3>
