@@ -87,7 +87,7 @@
     .header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--border)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
     .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
-    /* Brand name only (no logo square) */
+    /* Brand name only (force dark green) */
     .brand .name{font-weight:800;letter-spacing:1.8px;color:var(--green-900);text-transform:uppercase}
     .nav-links{display:flex;gap:1rem;align-items:center}
     .nav-links a{padding:.55rem .75rem;border-radius:999px;color:var(--muted);text-decoration:none}
@@ -101,9 +101,13 @@
     .hero .grid{display:grid;grid-template-columns: 1.1fr .9fr;gap: clamp(1.25rem, 3vw, 2.5rem);align-items:center}
     .hero p{color:var(--muted)}
     .hero .actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+    .hero .success-kicker{width:100%;text-align:center;margin-top:.5rem;font-weight:700;letter-spacing:.06em;color:var(--green-700)}
+
     .metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.25rem}
-    .metric{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center;box-shadow:var(--shadow)}
-    .metric strong{display:block;font-size:1.6rem;letter-spacing:-.01em;color:var(--green-900)}
+    .metric{background:var(--green-700);border:1px solid transparent;border-radius:var(--radius);padding:1rem;text-align:center;box-shadow:var(--shadow);color:#eef7f4}
+    .metric strong{display:block;font-size:1.6rem;letter-spacing:-.01em;color:#ffffff}
+    .metric .label{display:block;margin-top:.25rem;color:#d9ebe6;font-weight:600}
+
     .hero-portrait{width:300px;height:auto;border-radius:500px;display:block;margin-inline:auto}
 
     @media (max-width: 900px){
@@ -123,6 +127,10 @@
     .card p{color:var(--muted)}
     .chip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);border-radius:999px;padding:.35rem .6rem;font-size:var(--fs-xs);color:var(--green-700)}
     .chip .dot{width:.4rem;height:.4rem;border-radius:50%;background:var(--orange-500)}
+
+    /* Slight accent for service cards */
+    .services .card{position:relative;overflow:hidden}
+    .services .card::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--orange-500),transparent)}
 
     /* Process timeline */
     .timeline{position:relative;margin-top:1rem}
@@ -202,19 +210,20 @@
           <div class="actions">
             <a class="button button--primary" href="#contact" aria-label="Book a discovery call">Book a discovery call</a>
             <a class="button button--ghost" href="#work" aria-label="See case studies">See case studies</a>
+            <p class="success-kicker" aria-hidden="true">SUCCESS FROM MY LAST CLIENT:</p>
           </div>
           <div class="metrics" role="list" aria-label="Proof points">
             <div class="metric" role="listitem">
-              <span class="muted">Avg. CVR Uplift</span>
-              <strong data-counter data-target="28">0%</strong>
+              <strong data-counter data-target="200" data-suffix="%">0</strong>
+              <span class="label">CVR Uplift</span>
             </div>
             <div class="metric" role="listitem">
-              <span class="muted">Experiments Run</span>
-              <strong data-counter data-target="150">0</strong>
+              <strong data-counter data-target="100" data-suffix="+">0</strong>
+              <span class="label">Experiments Run</span>
             </div>
             <div class="metric" role="listitem">
-              <span class="muted">AOV Growth</span>
-              <strong data-counter data-target="19">0%</strong>
+              <strong data-counter data-target="89" data-suffix="%">0</strong>
+              <span class="label">AOV Growth</span>
             </div>
           </div>
         </div>
@@ -227,11 +236,12 @@
     <div class="hairline"></div>
 
     <!-- SERVICES -->
-    <section id="services" class="section" aria-labelledby="services-title">
+    <section id="services" class="section services" aria-labelledby="services-title">
       <div class="container">
         <span class="eyebrow">Services</span>
         <h2 id="services-title">Built for e‑commerce growth</h2>
-        <div class="grid-3" style="margin-top:1rem">
+        <!-- 2x2 grid with four cards -->
+        <div class="grid-2" style="margin-top:1rem">
           <article class="card" aria-label="CRO Audit">
             <h3>Conversion Audit</h3>
             <p>Full‑stack UX & analytics audit to uncover friction, leaks, and missed revenue. Prioritized fixes and quick wins in 2 weeks.</p>
@@ -239,7 +249,7 @@
           </article>
           <article class="card" aria-label="Experimentation Program">
             <h3>Experimentation Program</h3>
-            <p>Ongoing research, hypothesis design, and A/B testing. Velocity without sacrificing rigor, from backlog to analysis.</p>
+            <p>Ongoing research, hypothesis design, and A/B testing. Velocity without guesswork.</p>
             <div class="chip" style="margin-top:.5rem"><span class="dot"></span><span>Monthly retainer</span></div>
           </article>
           <article class="card" aria-label="Landing Pages">
@@ -247,17 +257,10 @@
             <p>High‑intent funnels for paid traffic: modular sections, fast load, persuasive copy. Built to test and iterate quickly.</p>
             <div class="chip" style="margin-top:.5rem"><span class="dot"></span><span>Design + build</span></div>
           </article>
-          <article class="card" aria-label="Research">
+          <article class="card" aria-label="Customer Research">
             <h3>Customer Research</h3>
-            <p>Heuristics, session replays, on‑site polls, surveys, interviews & JTBD synthesis to pinpoint what actually moves the needle.</p>
-          </article>
-          <article class="card" aria-label="Analytics">
-            <h3>Analytics & Instrumentation</h3>
-            <p>GA4/Pixel/Tag Manager set‑up, event models, and QA so your decisions—and tests—are backed by trustworthy data.</p>
-          </article>
-          <article class="card" aria-label="Ad Creative Testing">
-            <h3>Ad Creative Testing</h3>
-            <p>Close the loop between channel and site by validating angles and offers in‑funnel. Better CAC, higher ROAS.</p>
+            <p>Heuristics, session replays, on‑site polls, surveys, and both qualitative & quantitative avatar research to pinpoint what actually moves the needle.</p>
+            <div class="chip" style="margin-top:.5rem"><span class="dot"></span><span>Insight‑first approach</span></div>
           </article>
         </div>
       </div>
@@ -267,8 +270,13 @@
     <section id="process" class="section" aria-labelledby="process-title">
       <div class="container">
         <span class="eyebrow">Process</span>
-        <h2 id="process-title">A clear path from insight to lift</h2>
+        <h2 id="process-title">A clear insight on how I conduct my work</h2>
         <div class="timeline" role="list">
+          <div class="step" role="listitem">
+            <span class="marker" aria-hidden="true"></span>
+            <h3>Research</h3>
+            <p class="muted">Qualitative and quantitative thorough research about the product‑market fit, customer avatars, competitors, and more.</p>
+          </div>
           <div class="step" role="listitem">
             <span class="marker" aria-hidden="true"></span>
             <h3>Discover</h3>
@@ -276,23 +284,18 @@
           </div>
           <div class="step" role="listitem">
             <span class="marker" aria-hidden="true"></span>
-            <h3>Diagnose</h3>
-            <p class="muted">Quant + qual research: cohorts, search terms, replays, polls, heatmaps, surveys, and interviews.</p>
-          </div>
-          <div class="step" role="listitem">
-            <span class="marker" aria-hidden="true"></span>
             <h3>Design</h3>
-            <p class="muted">Hypotheses & prioritization with PXL/ICE/RICE scoring. Copy + UX concepts mapped to user anxieties & triggers.</p>
+            <p class="muted">Hypotheses and prioritization on what actually moves the needle, using a proven scoring framework.</p>
           </div>
           <div class="step" role="listitem">
             <span class="marker" aria-hidden="true"></span>
             <h3>Test</h3>
-            <p class="muted">Implement A/B tests with clean QA, monitor run rules, and analyze for real lift—no peeking.</p>
+            <p class="muted">Implement A/B tests with clean QA, monitor run rules, and let the data speak for itself.</p>
           </div>
           <div class="step" role="listitem">
             <span class="marker" aria-hidden="true"></span>
-            <h3>Scale</h3>
-            <p class="muted">Roll‑outs, compounding learnings, and new ideas fed back into creative & channel for durable growth.</p>
+            <h3>Iterate</h3>
+            <p class="muted">Roll out winners, compound insights across the funnel, and continuously refine based on fresh data.</p>
           </div>
         </div>
       </div>
@@ -491,8 +494,8 @@
     // Counters on scroll
     const counters = document.querySelectorAll('[data-counter]');
     const format = (el, v) => {
-      const hasPercent = el.textContent.trim().endsWith('%');
-      el.textContent = hasPercent ? Math.round(v) + '%' : Math.round(v);
+      const suffix = el.dataset.suffix || '';
+      el.textContent = Math.round(v) + suffix;
     };
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
