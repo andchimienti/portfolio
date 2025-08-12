@@ -359,13 +359,14 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+     <!-- CONTACT -->
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container">
         <span class="eyebrow">Contact</span>
         <h2 id="contact-title">Book a discovery call</h2>
         <div class="grid-2" style="margin-top:1rem">
-          <form class="card form" id="contactForm" aria-label="Contact form">
+          <form class="card form" id="contactForm" aria-label="Contact form" action="https://formspree.io/f/xqalngzk" method="POST">
+            <input type="text" name="company" class="hide" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0" />
             <div class="row">
               <label>
                 <span class="sr-only">Name</span>
@@ -373,7 +374,7 @@
               </label>
               <label>
                 <span class="sr-only">Email</span>
-                <input class="input" type="email" name="email" placeholder="Best E-mail" required />
+                <input class="input" type="email" name="email" placeholder="you@company.com" required />
               </label>
             </div>
             <div class="row">
@@ -384,10 +385,10 @@
               <label>
                 <span class="sr-only">Monthly traffic</span>
                 <select class="input" name="traffic">
-                  <option value="" disabled selected>Monthly revenue</option>
+                  <option value="" disabled selected>Monthly sessions</option>
                   <option>&lt; 50k</option>
-                  <option>50k – 250k</option>
-                  <option>250k – 500k</option>
+                  <option>50k – 150k</option>
+                  <option>150k – 500k</option>
                   <option>&gt; 500k</option>
                 </select>
               </label>
@@ -405,16 +406,17 @@
             </label>
             <label>
               <span class="sr-only">Message</span>
-              <textarea class="input" rows="4" name="message" placeholder="Tell me about your goals"></textarea>
+              <textarea class="input" rows="4" name="message" placeholder="Tell me about your goals" required></textarea>
             </label>
             <button class="button button--primary" type="submit">Send</button>
-            <div class="success" id="formSuccess" role="status">Thanks! I’ll reply within 1 business day.</div>
+            $1
+            <div class="error" id="formError" role="alert" aria-live="polite" aria-atomic="true" style="display:none">Something went wrong. Please try again or email me at and.chimienti@gmail.com.</div>
             <p class="muted" style="margin:0">Prefer email? <button type="button" class="button button--ghost" id="copyEmail">Copy email</button></p>
           </form>
           <aside class="card">
             <h3>Calendly / Booking</h3>
             <p class="muted">If you’d rather grab a slot directly, use my booking link.</p>
-            <p style="margin:.6rem 0 0"><a class="button button--ghost" href="https://calendly.com/and-chimienti/cro-discovery-call" target="_blank" rel="noopener">Open calendar</a></p>
+            <p style="margin:.6rem 0 0"><a class="button button--ghost" href="https://calendly.com/your-handle/intro" target="_blank" rel="noopener">Open calendar</a></p>
             <div class="chip" style="margin-top:.85rem"><span class="dot"></span><span>30‑minute intro call</span></div>
           </aside>
         </div>
@@ -424,7 +426,7 @@
 
   <footer role="contentinfo">
     <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;justify-content:space-between">
-      <p>© <span id="year"></span> Andrea Chimienti</p>
+      <p>© <span id="year"></span> Andrea Chimienti • CRO for E‑Commerce</p>
       <nav aria-label="Footer">
         <a class="muted" href="#services">Services</a>
         <span class="muted" aria-hidden="true">·</span>
@@ -478,18 +480,74 @@
       })
     }, {threshold:.6});
     counters.forEach(c => io.observe(c));
-
-    // Contact form fake handler (no backend)
+    // Contact form handler — Formspree
+    const FORM_ENDPOINT = 'https://formspree.io/f/xqalngzk';
     const form = document.getElementById('contactForm');
     const success = document.getElementById('formSuccess');
-    form?.addEventListener('submit', (e) => {
+    const errorBox = document.getElementById('formError');
+
+    // Guard: mark first real interaction to defeat bots (min submit time)
+    let interactionStart = Date.now();
+    const armGuard = () => { interactionStart = Date.now(); window.removeEventListener('pointerdown', armGuard); window.removeEventListener('keydown', armGuard); };
+    window.addEventListener('pointerdown', armGuard, { once: true });
+    window.addEventListener('keydown', armGuard, { once: true });
+
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      success.style.display = 'block';
-      form.reset();
+      errorBox.style.display = 'none';
+
+      // Basic HTML5 validation first
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+
+      const btn = form.querySelector('button[type="submit"]');
+      const honeypot = form.querySelector('input[name="company"]');
+
+      // Honeypot: if filled, pretend success
+      if(honeypot && honeypot.value){
+        success.style.display = 'block';
+        form.reset();
+        return;
+      }
+
+      // Submit-time threshold (3s from interaction)
+      const MIN_MS = 3000; const elapsed = Date.now() - interactionStart;
+      if(elapsed < MIN_MS){
+        await new Promise(r => setTimeout(r, MIN_MS - elapsed));
+      }
+
+      btn?.setAttribute('disabled', 'disabled');
+      if(btn) btn.textContent = 'Sending...';
+
+      try{
+        const data = new FormData(form);
+        const resp = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        });
+        let json = {};
+        try{ json = await resp.json(); }catch(_){ }
+
+        if(resp.ok){
+          success.style.display = 'block';
+          form.reset();
+        }else{
+          const msg = (json.errors && json.errors.map(e=>e.message).join(', ')) || 'Submission failed. Please try again.';
+          throw new Error(msg);
+        }
+      }catch(err){
+        errorBox.textContent = (err && err.message ? err.message : 'Something went wrong.') + ' You can also email me at and.chimienti@gmail.com.';
+        errorBox.style.display = 'block';
+      }finally{
+        if(btn){ btn.removeAttribute('disabled'); btn.textContent = 'Send'; }
+      }
     });
 
     // Copy email helper — replace with your email
-    const email = 'and.chimienti@gmail.com';
+    const email = 'hello@yourdomain.com';
     document.getElementById('copyEmail')?.addEventListener('click', async () => {
       try{
         await navigator.clipboard.writeText(email);
