@@ -359,7 +359,7 @@
       </div>
     </section>
 
-     <!-- CONTACT -->
+    <!-- CONTACT -->
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container">
         <span class="eyebrow">Contact</span>
@@ -409,7 +409,7 @@
               <textarea class="input" rows="4" name="message" placeholder="Tell me about your goals" required></textarea>
             </label>
             <button class="button button--primary" type="submit">Send</button>
-            $1
+            <div class="success" id="formSuccess" role="status">Thanks! I’ll reply within 1 business day.</div>
             <div class="error" id="formError" role="alert" aria-live="polite" aria-atomic="true" style="display:none">Something went wrong. Please try again or email me at and.chimienti@gmail.com.</div>
             <p class="muted" style="margin:0">Prefer email? <button type="button" class="button button--ghost" id="copyEmail">Copy email</button></p>
           </form>
@@ -494,7 +494,7 @@
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
-      errorBox.style.display = 'none';
+      if(errorBox) errorBox.style.display = 'none';
 
       // Basic HTML5 validation first
       if(!form.checkValidity()){
@@ -507,7 +507,7 @@
 
       // Honeypot: if filled, pretend success
       if(honeypot && honeypot.value){
-        success.style.display = 'block';
+        if(success) success.style.display = 'block'; else alert('Thanks! I’ll reply within 1 business day.');
         form.reset();
         return;
       }
@@ -532,22 +532,22 @@
         try{ json = await resp.json(); }catch(_){ }
 
         if(resp.ok){
-          success.style.display = 'block';
+          if(success) success.style.display = 'block'; else alert('Thanks! I’ll reply within 1 business day.');
           form.reset();
         }else{
           const msg = (json.errors && json.errors.map(e=>e.message).join(', ')) || 'Submission failed. Please try again.';
           throw new Error(msg);
         }
       }catch(err){
-        errorBox.textContent = (err && err.message ? err.message : 'Something went wrong.') + ' You can also email me at and.chimienti@gmail.com.';
-        errorBox.style.display = 'block';
+        if(errorBox){ errorBox.textContent = (err && err.message ? err.message : 'Something went wrong.') + ' You can also email me at and.chimienti@gmail.com.'; errorBox.style.display = 'block'; } else { alert((err && err.message ? err.message : 'Something went wrong.') + '
+You can also email me at and.chimienti@gmail.com.'); }
       }finally{
         if(btn){ btn.removeAttribute('disabled'); btn.textContent = 'Send'; }
       }
     });
 
     // Copy email helper — replace with your email
-    const email = 'hello@yourdomain.com';
+    const email = 'and.chimienti@gmail.com';
     document.getElementById('copyEmail')?.addEventListener('click', async () => {
       try{
         await navigator.clipboard.writeText(email);
