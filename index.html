@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Andrea Chimienti</title>
+  <title>Data‑Driven CRO for E‑Commerce | Andrea Chimienti</title>
   <meta name="description" content="I help e‑commerce brands turn traffic into revenue with research‑driven conversion rate optimization, experimentation programs, and high‑performing landing pages." />
   <meta name="theme-color" content="#ffffff" />
   <meta property="og:title" content="Data‑Driven CRO for E‑Commerce | Andrea Chimienti" />
@@ -178,7 +178,32 @@
     @media (prefers-reduced-motion: reduce){
       *{animation:none!important;transition:none!important}
     }
-  </style>
+  
+
+    /* =============================
+       Mobile polish & responsive tweaks
+       ============================= */
+    @media (max-width: 900px){
+      .nav{flex-wrap:wrap}
+    }
+    @media (max-width: 760px){
+      .nav-links{display:none}
+      .nav-cta{display:block}
+      .hero h1{font-size:clamp(1.6rem, 6.5vw, 2.2rem)}
+      .hero .actions{justify-content:center}
+      .hero-portrait{margin-top:1rem}
+    }
+    @media (max-width: 600px){
+      .metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-portrait{width:min(240px,70vw);height:auto;max-width:100%}
+      .container{padding-inline:1rem}
+    }
+    @media (max-width: 420px){
+      .metrics{grid-template-columns:1fr}
+      .button{width:100%;justify-content:center}
+      .hero h1 span{ text-decoration-thickness: 14px; text-underline-offset: -9px; }
+    }
+</style>
 </head>
 <body>
   <a class="sr-only" href="#contact">Skip to contact</a>
@@ -209,7 +234,7 @@
           <h1>Squeeze The Most Out Of Your Traffic With <br><span style="text-decoration-color: var(--green-700); text-decoration: underline;text-decoration-thickness: 20px;text-underline-offset: -13px;text-decoration-skip-ink: none;text-decoration-color: var(--orange-500);text-decoration-margin: 10px;">Data-Driven CRO</span></h1>
           <p>I help DTC E-commerce brands make more profit per visitor with the same amount of adspend through research-backed data-driven CRO.</p>
           <div class="actions">
-            <a class="button button--primary" href="#contact" aria-label="Book a discovery call">Book a discovery call</a>
+            <a class="button button--primary" href="#contact" aria-label="Book a discovery call">Get a Quote or Book A Call</a>
             <a class="button button--ghost" href="#work" aria-label="See case studies">See case studies</a>
             <p class="success-kicker" aria-hidden="true">SUCCESS FROM MY LAST CLIENT:</p>
           </div>
@@ -549,8 +574,8 @@
           throw new Error(msg);
         }
       }catch(err){
-        const errMsg = (err && err.message ? err.message : 'Something went wrong.') + '
-You can also email me at and.chimienti@gmail.com.';
+        const errMsg = `${err && err.message ? err.message : 'Something went wrong.'}
+You can also email me at and.chimienti@gmail.com.`;
         if(errorBox){ errorBox.textContent = errMsg; errorBox.style.display = 'block'; } else { alert(errMsg); }
       }finally{
         if(btn){ btn.removeAttribute('disabled'); btn.textContent = 'Send'; }
