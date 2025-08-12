@@ -84,7 +84,7 @@
     .button--ghost:hover{border-color:var(--orange-500);color:var(--green-900)}
 
     /* Header on white */
-    .header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--border)}
+    .header{z-index:100;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--border)}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:.85rem 0}
     .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
     /* Brand name only (force dark green) */
@@ -439,21 +439,23 @@
             <button class="button button--primary" type="submit">Send</button>
             <div class="success" id="formSuccess" role="status">Thanks! I’ll reply within 1 business day.</div>
             <div class="error" id="formError" role="alert" aria-live="polite" aria-atomic="true" style="display:none">Something went wrong. Please try again or email me at and.chimienti@gmail.com.</div>
-            <p class="muted" style="margin:0">Prefer email? <button type="button" class="button button--ghost" id="copyEmail">Copy email</button></p>
           </form>
           <iframe name="formspree_iframe" class="hide" title="Submission frame"></iframe>
           <aside class="card">
             <h3>Calendly / Booking</h3>
             <p class="muted">If you’d rather grab a slot directly, use my booking link.</p>
             <p style="margin:.6rem 0 0"><a class="button button--ghost" href="https://calendly.com/your-handle/intro" target="_blank" rel="noopener">Open calendar</a></p>
-            <div class="chip" style="margin-top:.85rem"><span class="dot"></span><span>30‑minute intro call</span></div>
-          </aside>
-
-          <aside class="card">
-            <h3>Telegram</h3>
+           
+            <h3 style="margin-top:15px;">Telegram</h3>
             <p class="muted">If prefer to chat on Telegram:</p>
             <p style="margin:.6rem 0 0"><a class="button button--ghost" href="https://t.me/andchimi" target="_blank" rel="noopener">Open Telegram</a></p>
+
+            <h3 style="margin-top:15px;">E-Mail</h3>
+            <p class="muted">Or via E-Mail:</p>
+            <p style="margin:.6rem 0 0"><a class="button button--ghost" href="mailto:and.chimienti@gmail.com" target="_blank" rel="noopener">Email Me</a></p>
           </aside>
+
+        
         </div>
       </div>
     </section>
