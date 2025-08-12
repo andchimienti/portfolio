@@ -73,14 +73,14 @@
     h2{font-size:var(--fs-xl);letter-spacing:-.01em}
     h3{font-size:var(--fs-lg)}
     p{margin:0 0 1rem;color:var(--text)}
-    .muted{color:var(--muted)}
+    .muted{color:var(--muted); margin-bottom: 0px; margin-top: 10px;}
 
     a{color:inherit}
     .button{appearance:none;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;border-radius:999px;padding:.85rem 1.15rem;font-weight:700;letter-spacing:.01em;text-decoration:none;transition:transform .15s ease, background .15s ease, border-color .15s ease}
     .button:active{transform:translateY(1px)}
-    .button--primary{background:var(--orange-500);color:#fff}
+    .button--primary{background:var(--orange-500);color:#fff; font-size: 18px;}
     .button--primary:hover{background:var(--orange-600)}
-    .button--ghost{background:#fff;border:1px solid var(--green-300);color:var(--green-700)}
+    .button--ghost{background:#fff;border:1px solid var(--green-300);color:var(--green-700); padding: 10px;}
     .button--ghost:hover{border-color:var(--orange-500);color:var(--green-900)}
 
     /* Header on white */
@@ -205,7 +205,7 @@
       <div class="container grid">
         <div>
           <span class="kicker"><span class="dot"></span>Conversion Rate Optimization</span>
-          <h1>Squeeze The Most Out Of Your Traffic With <br><span style="text-decoration-color: var(--green-700); text-decoration: underline;text-decoration-thickness: 20px;text-underline-offset: -13px;text-decoration-skip-ink: none;text-decoration-color: var(--orange-500);text-decoration-margin: 10px;"></span>Data-Driven CRO</h1>
+          <h1>Squeeze The Most Out Of Your Traffic With <br><span style="text-decoration-color: var(--green-700); text-decoration: underline;text-decoration-thickness: 20px;text-underline-offset: -13px;text-decoration-skip-ink: none;text-decoration-color: var(--orange-500);text-decoration-margin: 10px;">Data-Driven CRO</span></h1>
           <p>I help DTC E-commerce brands make more profit per visitor with the same amount of adspend through research-backed data-driven CRO.</p>
           <div class="actions">
             <a class="button button--primary" href="#contact" aria-label="Book a discovery call">Book a discovery call</a>
@@ -308,34 +308,25 @@
         <h2 id="work-title">Recent wins</h2>
         <div class="grid-3" style="margin-top:1rem">
           <article class="card case" aria-label="Case Study 1">
-            <h3>Premium Skincare DTC</h3>
-            <p class="muted">Reframed value props and simplified PDP—cut cognitive load by 32% and clarified shade selection.</p>
+            <h3>Premium Skincare DTC Forge Skin</h3>
+            <p class="muted">Revamped the entire Customer Journey to better identify our audience & squeeze the most amount of revenue from paid traffic</p>
             <div class="result">
-              <span class="pill">+28% CVR</span>
-              <span class="pill">+14% Checkout Start</span>
-              <span class="pill">−18% Support tickets</span>
-            </div>
-            <div class="foot">
-              <span class="muted">3 weeks · A/B test</span>
-              <a class="button button--ghost" href="#contact">Discuss approach</a>
+              <span class="pill">+89% AOV</span>
+              <span class="pill">+200% Funnel CVR</span>
             </div>
           </article>
           <article class="card case" aria-label="Case Study 2">
-            <h3>Outdoor Gear Retailer</h3>
-            <p class="muted">Landing page sprint for paid traffic: offer clarity + social proof ladder + faster LCP.</p>
+            <h3>Premium Skincare DTC Forge Skin</h3>
+            <p class="muted">Conducted thorough customer reserach through personalized quizzes that deepened the understanding of our audience & helped brand messaging.</p>
             <div class="result">
-              <span class="pill">+41% LP CVR</span>
-              <span class="pill">−24% CPA</span>
-              <span class="pill">LCP 1.1s → 0.8s</span>
-            </div>
-            <div class="foot">
-              <span class="muted">2 sprints · Multi‑variate</span>
-              <a class="button button--ghost" href="#contact">See the breakdown</a>
+              <span class="pill">Reduced CAC</span>
+              <span class="pill">Over 70,000 Answers collected</span>
+              <span class="pill">Improved messaging pre & post-purchase</span>
             </div>
           </article>
           <article class="card case" aria-label="Case Study 3">
-            <h3>Home Goods Marketplace</h3>
-            <p class="muted">Checkout microcopy + progress cues + payment reassurance tested across segments.</p>
+            <h3>Premium Skincare DTC Brand</h3>
+            <p class="muted">Designed & Developed The entire Customer Journey from pre-lander to post-purchase.</p>
             <div class="result">
               <span class="pill">+19% AOV</span>
               <span class="pill">+9% CR to Purchase</span>
@@ -349,50 +340,21 @@
         </div>
       </div>
     </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section" aria-labelledby="about-title">
-      <div class="container grid-2">
-        <div>
-          <span class="eyebrow">About</span>
-          <h2 id="about-title">Hi, I’m Andrea Chimienti</h2>
-          <p>I’m a CRO specialist focused on e‑commerce. I pair rigorous research with crisp UX and persuasive copy to deliver measurable lift. I’ve run 150+ experiments for DTC brands from seed to 9‑figure revenue.</p>
-          <p class="muted">Tools I speak: GA4, GTM, Hotjar, Amplitude, Looker Studio, Clarity, VWO/Optimizely, Shopify, Klaviyo. Methodologies I like: JTBD, PXL, heuristics, cohorting, and message‑market mapping.</p>
-          <div class="actions" style="margin-top:.5rem">
-            <a class="button button--primary" href="#contact">Let’s talk</a>
-            <a class="button button--ghost" href="#faq">FAQ</a>
-          </div>
-        </div>
-        <aside class="card">
-          <img src="/images/photo_updated.jpg" alt="Photo of Andrea Chimienti" class="about-photo" loading="lazy" width="640" height="800" />
-          <h3 style="margin-top:1rem">Engagement Options</h3>
-          <ul class="muted" style="padding-left:1.1rem;margin:.6rem 0 0">
-            <li><strong>Starter Audit:</strong> 2‑week deep dive + roadmap</li>
-            <li><strong>Monthly Program:</strong> Research → Test → Roll‑out</li>
-            <li><strong>Landing Page Sprint:</strong> Design + build</li>
-            <li><strong>Ad/Offer Validation:</strong> LP + creative tests</li>
-          </ul>
-          <div class="chip" style="margin-top:.85rem"><span class="dot"></span><span>Custom scopes available</span></div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- FAQ -->
     <section id="faq" class="section" aria-labelledby="faq-title">
       <div class="container">
         <span class="eyebrow">FAQ</span>
-        <h2 id="faq-title">Good questions</h2>
+        <h2 id="faq-title">Questions?</h2>
         <details>
           <summary>How do you choose what to test first?</summary>
-          <p class="muted">We score hypotheses using impact, confidence, and ease (PXL/ICE). We start with opportunities nearest to the money: PDP → cart → checkout, unless research shows a bigger upstream win.</p>
+          <p class="muted">I score hypotheses using a widely-used proven framework that takes in account the most impactful variables any hypothesis can have. This ensure resources are not wasted in testing hypothesis that don't actually move the needle.</p>
         </details>
         <details>
-          <summary>What stack do you use for testing?</summary>
-          <p class="muted">Whatever fits your site: VWO/Optimizely for robust setups, native Shopify or lightweight scripts for landing pages. QA and guardrails prevent flicker and maintain run rules.</p>
+          <summary>Can I get a quote on a project?</summary>
+          <p>Yes, we can discuss a project scope, responsabilities and compensation via your preferred communication channel (e-mail or Telegram).</p>
         </details>
         <details>
           <summary>How soon can we see lift?</summary>
-          <p class="muted">Audits ship in ~2 weeks with quick wins. For programs, we aim for the first validated test within 2–4 weeks, depending on traffic and complexity.</p>
+          <p class="muted">I’m committed to letting the data speak. That’s how we avoid revisiting a test 2, 3, or 6 months later and finding the result “changed” simply because it was interpreted incorrectly. Test length varies with traffic volume—anywhere from a few days to several weeks—with most running 2–3 weeks.</p>
         </details>
       </div>
     </section>
@@ -411,7 +373,7 @@
               </label>
               <label>
                 <span class="sr-only">Email</span>
-                <input class="input" type="email" name="email" placeholder="you@company.com" required />
+                <input class="input" type="email" name="email" placeholder="Best E-mail" required />
               </label>
             </div>
             <div class="row">
@@ -422,10 +384,10 @@
               <label>
                 <span class="sr-only">Monthly traffic</span>
                 <select class="input" name="traffic">
-                  <option value="" disabled selected>Monthly sessions</option>
+                  <option value="" disabled selected>Monthly revenue</option>
                   <option>&lt; 50k</option>
-                  <option>50k – 150k</option>
-                  <option>150k – 500k</option>
+                  <option>50k – 250k</option>
+                  <option>250k – 500k</option>
                   <option>&gt; 500k</option>
                 </select>
               </label>
@@ -452,7 +414,7 @@
           <aside class="card">
             <h3>Calendly / Booking</h3>
             <p class="muted">If you’d rather grab a slot directly, use my booking link.</p>
-            <p style="margin:.6rem 0 0"><a class="button button--ghost" href="https://calendly.com/your-handle/intro" target="_blank" rel="noopener">Open calendar</a></p>
+            <p style="margin:.6rem 0 0"><a class="button button--ghost" href="https://calendly.com/and-chimienti/cro-discovery-call" target="_blank" rel="noopener">Open calendar</a></p>
             <div class="chip" style="margin-top:.85rem"><span class="dot"></span><span>30‑minute intro call</span></div>
           </aside>
         </div>
@@ -462,7 +424,7 @@
 
   <footer role="contentinfo">
     <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;justify-content:space-between">
-      <p>© <span id="year"></span> Andrea Chimienti • CRO for E‑Commerce</p>
+      <p>© <span id="year"></span> Andrea Chimienti</p>
       <nav aria-label="Footer">
         <a class="muted" href="#services">Services</a>
         <span class="muted" aria-hidden="true">·</span>
@@ -527,7 +489,7 @@
     });
 
     // Copy email helper — replace with your email
-    const email = 'hello@yourdomain.com';
+    const email = 'and.chimienti@gmail.com';
     document.getElementById('copyEmail')?.addEventListener('click', async () => {
       try{
         await navigator.clipboard.writeText(email);
